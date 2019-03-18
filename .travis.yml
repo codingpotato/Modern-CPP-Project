@@ -2,9 +2,19 @@ dist: xenial
 
 language: cpp
 sudo: false
-compiler: clang
+compiler: gcc
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
 
 before_script:
+  - export CC=gcc-7
+  - export CXX=g++-7
   - cd ${TRAVIS_BUILD_DIR}
   - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
   - cd build

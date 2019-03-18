@@ -10,5 +10,5 @@ before_script:
   - cd build
 
 script:
-  - make -j 2
+  - make -j 2 VERBOSE=1
   - ctest -V -j 2

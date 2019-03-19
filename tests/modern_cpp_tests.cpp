@@ -5,11 +5,10 @@
 
 template <class... Ts>
 struct overload : Ts... {
-  overload(Ts...) {}
   using Ts::operator()...;
 };
-// template <class... Ts>
-// overload(Ts...)->overload<Ts...>;
+template <class... Ts>
+overload(Ts...)->overload<Ts...>;
 
 TEST_CASE("variant get", "[variant]") {
   std::variant<int, std::string> n{1};

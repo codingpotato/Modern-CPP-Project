@@ -22,7 +22,7 @@ TEST_CASE("variant visit", "[variant]") {
              n);
   std::variant<int, std::string> str{"string"};
   std::visit(
-      overload{[](int) { REQUIRE(false); },
+      overload{[](int value) { REQUIRE(false); },
                [](const std::string &value) { REQUIRE(value == "string"); }},
-      n);
+      str);
 }
